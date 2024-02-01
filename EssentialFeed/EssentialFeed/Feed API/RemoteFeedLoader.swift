@@ -54,3 +54,14 @@ public final class RemoteFeedLoader {
 private struct Root: Decodable {
   let items: [FeedItem]
 }
+
+private struct Item: Decodable {
+  let id: UUID
+  let description: String?
+  let location: String?
+  let imageURL: URL
+  
+  var item: FeedItem {
+    FeedItem(id: id, description: description, location: location, imageURL: imageURL)
+  }
+}
