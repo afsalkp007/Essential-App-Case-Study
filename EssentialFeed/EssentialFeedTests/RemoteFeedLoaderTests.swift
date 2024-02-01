@@ -74,19 +74,6 @@ class RemoteFeedLoaderTests: XCTestCase {
     })
   }
   
-  // MARK: - Helpers
-  
-  private func expect(_ sut: RemoteFeedLoader, toCompleteWithResult result: RemoteFeedLoader.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
-    
-    var capturedResults = [RemoteFeedLoader.Result]()
-    sut.load { capturedResults.append($0) }
-    
-    action()
-    
-    XCTAssertEqual(capturedResults, [result], file: file, line: line)
-
-  }
-  
   func test_load_deliversItemsOn200HTTPResponseWithJSONItems() {
     let (sut, client)  = makeSUT()
 
@@ -110,6 +97,32 @@ class RemoteFeedLoaderTests: XCTestCase {
   
   // MARK: - Helpers
   
+  private func makeSUT(url: URL = URL(string: "https://a-given-url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: RemoteFeedLoader, client: HTTPClientSpy) {
+    let client = HTTPClientSpy()
+    let sut = RemoteFeedLoader(url: url, client: client)
+    trackForMemoryLeaks(sut, file: file, line: line)
+    trackForMemoryLeaks(client, file: file, line: line)
+    return (sut, client)
+  }
+  
+  private func trackForMemoryLeaks(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
+    addTeardownBlock { [weak instance] in
+      XCTAssertNil(instance, "Instance should have been deallocated. Potential memory leak", file: file, line: line)
+    }
+  }
+  
+  private func expect(_ sut: RemoteFeedLoader, toCompleteWithResult result: RemoteFeedLoader.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+    
+    var capturedResults = [RemoteFeedLoader.Result]()
+    sut.load { capturedResults.append($0) }
+    
+    action()
+    
+    XCTAssertEqual(capturedResults, [result], file: file, line: line)
+
+  }
+  
+ 
   private func makeItem(id: UUID, description: String? = nil, location: String? = nil, imageURL: URL) -> (model: FeedItem, json: [String: Any]) {
     let item = FeedItem(id: id, description: description, location: location, imageURL: imageURL)
     let json: [String: Any] = [
@@ -125,12 +138,6 @@ class RemoteFeedLoaderTests: XCTestCase {
     let json = ["items": items]
     return try! JSONSerialization.data(withJSONObject: json)
 
-  }
-  
-  private func makeSUT(url: URL = URL(string: "https://a-given-url.com")!) -> (sut: RemoteFeedLoader, client: HTTPClientSpy) {
-    let client = HTTPClientSpy()
-    let sut = RemoteFeedLoader(url: url, client: client)
-    return (sut, client)
   }
   
   private class HTTPClientSpy: HTTPClient {
