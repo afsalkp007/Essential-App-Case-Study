@@ -30,7 +30,7 @@
       <Testables>
          <TestableReference
             skipped = "NO"
-            parallelizable = "YES">
+            testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F421CF212B6A9DC800754112"
@@ -38,6 +38,35 @@
                BlueprintName = "EssentialFeedTests"
                ReferencedContainer = "container:EssentialFeed.xcodeproj">
             </BuildableReference>
+            <SelectedTests>
+               <Test
+                  Identifier = "RemoteFeedLoaderTests/test_init_doesNotRequestDataFromURL()">
+               </Test>
+               <Test
+                  Identifier = "RemoteFeedLoaderTests/test_loadTwice_requestsDataFromURLTwice()">
+               </Test>
+               <Test
+                  Identifier = "RemoteFeedLoaderTests/test_load_deliversErrorOn200HTTPResponseWithInvalidJSON()">
+               </Test>
+               <Test
+                  Identifier = "RemoteFeedLoaderTests/test_load_deliversErrorOnClientError()">
+               </Test>
+               <Test
+                  Identifier = "RemoteFeedLoaderTests/test_load_deliversErrorOnNon200HTTPResponse()">
+               </Test>
+               <Test
+                  Identifier = "RemoteFeedLoaderTests/test_load_deliversItemsOn200HTTPResponseWithJSONItems()">
+               </Test>
+               <Test
+                  Identifier = "RemoteFeedLoaderTests/test_load_deliversNoItemsOn200HTTPResponseWithEmptyJSONList()">
+               </Test>
+               <Test
+                  Identifier = "RemoteFeedLoaderTests/test_load_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated()">
+               </Test>
+               <Test
+                  Identifier = "RemoteFeedLoaderTests/test_load_requestsDataFromURL()">
+               </Test>
+            </SelectedTests>
          </TestableReference>
       </Testables>
    </TestAction>
