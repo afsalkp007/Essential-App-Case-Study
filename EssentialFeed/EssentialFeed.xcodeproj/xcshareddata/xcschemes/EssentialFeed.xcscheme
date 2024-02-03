@@ -38,47 +38,6 @@
                BlueprintName = "EssentialFeedTests"
                ReferencedContainer = "container:EssentialFeed.xcodeproj">
             </BuildableReference>
-            <SelectedTests>
-               <Test
-                  Identifier = "RemoteFeedLoaderTests/test_init_doesNotRequestDataFromURL()">
-               </Test>
-               <Test
-                  Identifier = "RemoteFeedLoaderTests/test_loadTwice_requestsDataFromURLTwice()">
-               </Test>
-               <Test
-                  Identifier = "RemoteFeedLoaderTests/test_load_deliversErrorOn200HTTPResponseWithInvalidJSON()">
-               </Test>
-               <Test
-                  Identifier = "RemoteFeedLoaderTests/test_load_deliversErrorOnClientError()">
-               </Test>
-               <Test
-                  Identifier = "RemoteFeedLoaderTests/test_load_deliversErrorOnNon200HTTPResponse()">
-               </Test>
-               <Test
-                  Identifier = "RemoteFeedLoaderTests/test_load_deliversItemsOn200HTTPResponseWithJSONItems()">
-               </Test>
-               <Test
-                  Identifier = "RemoteFeedLoaderTests/test_load_deliversNoItemsOn200HTTPResponseWithEmptyJSONList()">
-               </Test>
-               <Test
-                  Identifier = "RemoteFeedLoaderTests/test_load_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated()">
-               </Test>
-               <Test
-                  Identifier = "RemoteFeedLoaderTests/test_load_requestsDataFromURL()">
-               </Test>
-               <Test
-                  Identifier = "URLSessionHTTPClientTests/test_getFromURL_createsDataTaskWithURL()">
-               </Test>
-               <Test
-                  Identifier = "URLSessionHTTPClientTests/test_getFromURL_failsOnRequestError()">
-               </Test>
-               <Test
-                  Identifier = "URLSessionHTTPClientTests/test_getFromURL_performsGETRequestWithURL()">
-               </Test>
-               <Test
-                  Identifier = "URLSessionHTTPClientTests/test_getFromURL_resumesDataTaskWithURL()">
-               </Test>
-            </SelectedTests>
          </TestableReference>
       </Testables>
    </TestAction>
