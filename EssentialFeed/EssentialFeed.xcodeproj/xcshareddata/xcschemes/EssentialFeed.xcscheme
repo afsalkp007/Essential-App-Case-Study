@@ -66,6 +66,12 @@
                <Test
                   Identifier = "RemoteFeedLoaderTests/test_load_requestsDataFromURL()">
                </Test>
+               <Test
+                  Identifier = "URLSessionHTTPClientTests/test_getFromURL_createsDataTaskWithURL()">
+               </Test>
+               <Test
+                  Identifier = "URLSessionHTTPClientTests/test_getFromURL_resumesDataTaskWithURL()">
+               </Test>
             </SelectedTests>
          </TestableReference>
       </Testables>
