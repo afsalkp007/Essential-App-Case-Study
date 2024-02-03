@@ -94,9 +94,9 @@ class RemoteFeedLoaderTests: XCTestCase {
       client.complete(withStatusCode: 200, data: json)
     })
   }
-  
+
   func test_load_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
-    let url = URL(string: "http://any-url.com")!
+    let url = anyURL()
     let client = HTTPClientSpy()
     var sut: RemoteFeedLoader? = RemoteFeedLoader(url: url, client: client)
     
@@ -118,6 +118,11 @@ class RemoteFeedLoaderTests: XCTestCase {
     trackForMemoryLeaks(client, file: file, line: line)
     return (sut, client)
   }
+  
+  private func anyURL() -> URL {
+    return URL(string: "http://any-url.com")!
+  }
+
   
   private func failure(_ error: RemoteFeedLoader.Error) -> RemoteFeedLoader.Result {
     return .failure(error)
