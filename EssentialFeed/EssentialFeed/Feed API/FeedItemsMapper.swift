@@ -28,8 +28,8 @@ internal final class FeedItemsMapper {
   }
 }
 
-extension Array where Element == FeedItem {
+extension Array where Element == FeedImage {
   func toRemote() -> [RemoteFeedItem] {
-    return map { RemoteFeedItem(id: $0.id, description: $0.description, location: $0.location, image: $0.imageURL) }
+    return map { RemoteFeedItem(id: $0.id, description: $0.description, location: $0.location, image: $0.url) }
   }
 }
