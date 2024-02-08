@@ -119,11 +119,6 @@ class LoadFeedFromRemoteUseCaseTests: XCTestCase {
     return (sut, client)
   }
   
-  private func anyURL() -> URL {
-    return URL(string: "http://any-url.com")!
-  }
-
-  
   private func failure(_ error: RemoteFeedLoader.Error) -> RemoteFeedLoader.Result {
     return .failure(error)
   }
