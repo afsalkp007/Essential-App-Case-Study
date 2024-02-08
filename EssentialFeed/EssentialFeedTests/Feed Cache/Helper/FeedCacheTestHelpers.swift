@@ -20,7 +20,11 @@ func unequeImage() -> FeedImage {
 
 extension Date {
   func minusFeedCacheMaxAge() -> Date {
-    return adding(days: -7)
+    return adding(days: -feedCacehMaxAgeInDays)
+  }
+  
+  private var feedCacehMaxAgeInDays: Int {
+    return 7
   }
   
   func adding(days: Int) -> Date {
