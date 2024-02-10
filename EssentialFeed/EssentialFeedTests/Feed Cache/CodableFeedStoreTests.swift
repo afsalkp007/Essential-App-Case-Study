@@ -35,8 +35,12 @@ class CodableFeedStore {
       return LocalFeedImage(id: id, description: description, location: location, url: url)
     }
   }
-
-  private let storeURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("image-feed.store")
+  
+  private let storeURL: URL
+  
+  init(storeURL: Foundation.URL) {
+    self.storeURL = storeURL
+  }
   
   func retrieve(completion: @escaping FeedStore.RetrievalCompletion) {
     guard let data = try? Data(contentsOf: storeURL) else {
@@ -140,7 +144,8 @@ class CodableFeedStoreTests: XCTestCase {
   // MARK: - Helpers
   
   private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> CodableFeedStore {
-    let sut: CodableFeedStore = CodableFeedStore()
+    let storeURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("image-feed.store")
+    let sut: CodableFeedStore = CodableFeedStore(storeURL: storeURL)
     trackForMemoryLeaks(sut, file: file, line: line)
     return sut
   }
