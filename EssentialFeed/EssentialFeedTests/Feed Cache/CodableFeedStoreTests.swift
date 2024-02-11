@@ -168,17 +168,13 @@ class CodableFeedStoreTests: XCTestCase {
     XCTAssertNotNil(insertionError, "Expected cache insertion to fail with an error")
     expect(sut, toRetrieve: .empty)
   }
-
+  
   func test_delete_hasNoSideEffectsOnEmptyCache() {
     let sut = makeSUT()
-    let exp = expectation(description: "Wait for cache deletion")
+    
+    let deletionError = deleteCache(sut)
 
-    sut.deleteCachedFeed { deletionError in
-      XCTAssertNil(deletionError, "Expected empty cache deletion to succeed")
-      exp.fulfill()
-    }
-    wait(for: [exp], timeout: 1.0)
-
+    XCTAssertNil(deletionError)
     expect(sut, toRetrieve: .empty)
   }
 
@@ -186,13 +182,9 @@ class CodableFeedStoreTests: XCTestCase {
     let sut = makeSUT()
     insert((uniqueImageFeed().local, Date()), to: sut)
 
-    let exp = expectation(description: "Wait for cache deletion")
-    sut.deleteCachedFeed { deletionError in
-      XCTAssertNil(deletionError, "Expected non-empty cache deletion to succeed")
-      exp.fulfill()
-    }
-    wait(for: [exp], timeout: 1.0)
+    let deletionError = deleteCache(sut)
 
+    XCTAssertNil(deletionError)
     expect(sut, toRetrieve: .empty)
   }
 
@@ -217,6 +209,16 @@ class CodableFeedStoreTests: XCTestCase {
     return insertionError
   }
 
+  private func deleteCache(_ sut: CodableFeedStore) -> Error? {
+    let exp = expectation(description: "Wait for cache deletion")
+    var deletionError: Error?
+    sut.deleteCachedFeed { receiveddDletionError in
+      deletionError = receiveddDletionError
+      exp.fulfill()
+    }
+    wait(for: [exp], timeout: 1.0)
+    return deletionError
+  }
   
   private func expect(_ sut: CodableFeedStore, toRetrieve expectedResult: RetrievedCachedFeedResult, file: StaticString = #filePath, line: UInt = #line) {
     let exp = expectation(description: "Wait for cache retrieval")
