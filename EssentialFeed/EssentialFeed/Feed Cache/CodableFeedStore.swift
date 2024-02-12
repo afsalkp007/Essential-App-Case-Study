@@ -76,7 +76,7 @@ public class CodableFeedStore: FeedStore {
     }
   }
   
-  public func deleteCachedFeed(_ completion: @escaping DeletionCompletion) {
+  public func deleteCachedFeed(completion: @escaping DeletionCompletion) {
     let storeURL = self.storeURL
     queue.async(flags: .barrier) {
       
