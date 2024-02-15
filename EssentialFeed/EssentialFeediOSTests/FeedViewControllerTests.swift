@@ -34,15 +34,13 @@ final class FeedViewController: UITableViewController {
 final class FeedViewControllerTests: XCTestCase {
   
   func test_init_doesNotLoadFeed() {
-    let loader = LoaderSpy()
-    _ = FeedViewController(loader: loader)
+    let (_, loader) = makeSUT()
 
     XCTAssertEqual(loader.loadCallCount, 0)
   }
   
   func test_viewDidLoad_loadsFeed() {
-    let loader = LoaderSpy()
-    let sut = FeedViewController(loader: loader)
+    let (sut, loader) = makeSUT()
     
     sut.loadViewIfNeeded()
     
@@ -53,13 +51,12 @@ final class FeedViewControllerTests: XCTestCase {
     let (sut, loader) = makeSUT()
     sut.loadViewIfNeeded()
 
-    sut.refreshControl?.allTargets.forEach { target in
-      sut.refreshControl?.actions(forTarget: target, forControlEvent: .valueChanged)?.forEach {
-        (target as NSObject).perform(Selector($0))
-      }
-    }
-
+    sut.refreshControl?.simulatePullToRefresh()
     XCTAssertEqual(loader.loadCallCount, 2)
+    
+    sut.refreshControl?.simulatePullToRefresh()
+    XCTAssertEqual(loader.loadCallCount, 3)
+
   }
 
   
@@ -86,3 +83,14 @@ final class FeedViewControllerTests: XCTestCase {
 
 
 }
+
+private extension UIRefreshControl {
+  func simulatePullToRefresh() {
+    allTargets.forEach { target in
+      actions(forTarget: target, forControlEvent: .valueChanged)?.forEach {
+        (target as NSObject).perform(Selector($0))
+      }
+    }
+  }
+}
+
