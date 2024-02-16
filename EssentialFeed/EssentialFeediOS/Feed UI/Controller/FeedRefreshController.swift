@@ -8,7 +8,7 @@
 import UIKit
 import EssentialFeed
 
-final public class FeedRefreshController: NSObject {
+public final class FeedRefreshController: NSObject {
   public lazy var view: UIRefreshControl = {
     let view = UIRefreshControl()
     view.addTarget(self, action: #selector(load), for: .valueChanged)
