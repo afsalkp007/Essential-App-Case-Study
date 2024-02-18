@@ -14,7 +14,7 @@ public final class FeedUIComposer {
   public static func feedComposeWith(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader) -> FeedViewController {
     let presentationAdapter = FeedLoaderPresentationAdapter(feedLoader: MainQueueDispatchDecorator(decoratee: feedLoader))
     
-    let feedController = FeedViewController.makeWith(
+    let feedController = makeWith(
       delegate: presentationAdapter,
       title: FeedPresenter.title)
       
@@ -22,6 +22,15 @@ public final class FeedUIComposer {
       feedView: FeedViewAdapter(controller: feedController, loader: MainQueueDispatchDecorator(decoratee: imageLoader)),
       loadingView: WeakRefVirtualProxy(feedController))
 
+    return feedController
+  }
+  
+  private static func makeWith(delegate: FeedViewControllerDelegate, title: String) -> FeedViewController {
+    let bundle = Bundle(for: FeedViewController.self)
+    let storyboard = UIStoryboard(name: "Feed", bundle: bundle)
+    let feedController = storyboard.instantiateInitialViewController() as! FeedViewController
+    feedController.delegate = delegate
+    feedController.title = title
     return feedController
   }
 }
@@ -55,17 +64,6 @@ extension MainQueueDispatchDecorator: FeedImageDataLoader where T == FeedImageDa
     decoratee.loadImageData(from: url) { [weak self] result in
       self?.dispatch { completion(result) }
     }
-  }
-}
-
-private extension FeedViewController {
-  static func makeWith(delegate: FeedViewControllerDelegate, title: String) -> FeedViewController {
-    let bundle = Bundle(for: FeedViewController.self)
-    let storyboard = UIStoryboard(name: "Feed", bundle: bundle)
-    let feedController = storyboard.instantiateInitialViewController() as! FeedViewController
-    feedController.delegate = delegate
-    feedController.title = title
-    return feedController
   }
 }
 
