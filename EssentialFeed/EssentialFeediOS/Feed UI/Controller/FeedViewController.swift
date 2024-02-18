@@ -9,17 +9,12 @@ import UIKit
 
 final public class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
   public var refreshController: FeedRefreshController?
+  
   var tableModel = [FeedImageCellController]() {
     didSet { tableView.reloadData() }
   }
   
   private var onViewIsAppearing: ((FeedViewController) -> Void)?
-
-  convenience init(refreshController: FeedRefreshController) {
-    self.init()
-    self.refreshController = refreshController
-    
-  }
   
   public override func viewDidLoad() {
     super.viewDidLoad()
