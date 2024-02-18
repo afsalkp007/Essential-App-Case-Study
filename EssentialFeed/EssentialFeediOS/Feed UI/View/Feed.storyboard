@@ -77,6 +77,9 @@
                                                                 <fontDescription key="titleFontDescription" type="system" pointSize="80"/>
                                                                 <color key="baseForegroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </buttonConfiguration>
+                                                            <connections>
+                                                                <action selector="retryButtonTapped" destination="662-tH-FLB" eventType="touchUpInside" id="urh-vw-yAL"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -118,11 +121,20 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="HEM-Ss-H8v" secondAttribute="bottom" constant="6" id="lXc-5c-KhO"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="Yds-VB-m8H" id="Mxh-ab-Ja4"/>
+                                    <outlet property="feedImageContainer" destination="OQ8-vH-5gd" id="iFJ-E7-PHY"/>
+                                    <outlet property="feedImageRetryButton" destination="xaD-eV-0hp" id="yyA-aK-V9z"/>
+                                    <outlet property="feedImageView" destination="bld-S0-Zsf" id="jeX-8n-GmR"/>
+                                    <outlet property="locationContainer" destination="439-qZ-qA8" id="o9o-gv-J4R"/>
+                                    <outlet property="locationLabel" destination="tCJ-oy-OoB" id="JaT-LQ-nf7"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="hy0-Jd-l0I" id="hUj-dN-IPP"/>
                             <outlet property="delegate" destination="hy0-Jd-l0I" id="cpl-aB-Z5j"/>
+                            <outlet property="prefetchDataSource" destination="hy0-Jd-l0I" id="BTL-Yf-cy9"/>
                         </connections>
                     </tableView>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="iBJ-bM-Arx">
