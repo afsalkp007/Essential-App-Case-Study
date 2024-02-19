@@ -65,6 +65,7 @@
 		F4ACB1B92B74D6D300F66167 /* FeedCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ACB1B82B74D6D300F66167 /* FeedCachePolicy.swift */; };
 		F4F355862B833E65003595E3 /* FeedPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F355852B833E65003595E3 /* FeedPresenterTests.swift */; };
 		F4F3558B2B8349DC003595E3 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F3558A2B8349DC003595E3 /* ErrorView.swift */; };
+		F4F3558D2B834C41003595E3 /* FeedErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F3558C2B834C41003595E3 /* FeedErrorViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +175,7 @@
 		F4F355852B833E65003595E3 /* FeedPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenterTests.swift; sourceTree = "<group>"; };
 		F4F355872B833F67003595E3 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Feed.strings; sourceTree = "<group>"; };
 		F4F3558A2B8349DC003595E3 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		F4F3558C2B834C41003595E3 /* FeedErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedErrorViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -403,6 +405,7 @@
 			children = (
 				F48A02A62B80BCE00014DEB8 /* FeedPresenter.swift */,
 				F48A02B32B81576E0014DEB8 /* FeedImagePresenter.swift */,
+				F4F3558C2B834C41003595E3 /* FeedErrorViewModel.swift */,
 				F48A02BD2B828CE60014DEB8 /* Feed.strings */,
 			);
 			path = "Feed Presentation";
@@ -800,6 +803,7 @@
 				F4A2463F2B7E1ED600A7BBD7 /* FeedViewController.swift in Sources */,
 				F48A02882B7F148E0014DEB8 /* FeedImageCell.swift in Sources */,
 				F48A029A2B7F92AD0014DEB8 /* FeedImageCellController.swift in Sources */,
+				F4F3558D2B834C41003595E3 /* FeedErrorViewModel.swift in Sources */,
 				F4F3558B2B8349DC003595E3 /* ErrorView.swift in Sources */,
 				F48A029D2B7FA2290014DEB8 /* FeedUIComposer.swift in Sources */,
 			);

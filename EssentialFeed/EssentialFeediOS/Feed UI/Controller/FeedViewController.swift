@@ -48,15 +48,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
   }
   
   func display(_ viewModel: FeedLoadingViewModel) {
-    if viewModel.isLoading {
-      refreshControl?.beginRefreshing()
-    } else {
-      refreshControl?.endRefreshing()
-    }
-
+    refreshControl?.update(isRefreshing: viewModel.isLoading)
   }
-
-
   
   public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return tableModel.count
@@ -88,5 +81,16 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     cellController(forRowAt: indexPath).cancelLoad()
   }
 
+}
+
+extension UIRefreshControl {
+  func update(isRefreshing: Bool) {
+    if isRefreshing {
+      beginRefreshing()
+    } else {
+      endRefreshing()
+    }
+
+  }
 }
  
