@@ -316,6 +316,15 @@ final class FeedUIIntegrationTests: XCTestCase {
     }
     wait(for: [exp], timeout: 1.0)
   }
+  
+  func test_errorView_doesNotRenderErrorOnLoad() {
+    let (sut, _) = makeSUT()
+
+    sut.loadViewIfNeeded()
+
+    XCTAssertEqual(sut.errorMessage, nil)
+  }
+
 
   // MARK: - Helpers
   
@@ -445,6 +454,10 @@ private extension FeedViewController {
     delegate?.tableView?(tableView, didEndDisplaying: view!, forRowAt: index)
     
     return view
+  }
+  
+  var errorMessage: String? {
+    return errorView.message
   }
   
   func simulateFeedImageViewNearVisible(at row: Int) {
