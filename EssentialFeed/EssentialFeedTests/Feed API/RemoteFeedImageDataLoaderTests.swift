@@ -25,13 +25,17 @@ final class RemoteFeedImageDataLoader {
       
       switch result {
       case let .success((data, response)):
-        if response.statusCode == 200, !data.isEmpty {
-          completion(.success(data))
-        } else {
-          completion(.failure(Error.invalidData))
-        }
+        completion(Self.map(data, response))
       case let .failure(error): completion(.failure(error))
       }
+    }
+  }
+  
+  static func map(_ data: Data, _ response: HTTPURLResponse) -> FeedImageDataLoader.Result {
+    if response.statusCode == 200, !data.isEmpty {
+      return .success(data)
+    } else {
+      return .failure(Error.invalidData)
     }
   }
 }
@@ -127,7 +131,6 @@ class RemoteFeedImageDataLoaderTests: XCTestCase {
   
   private func expect(_ sut: RemoteFeedImageDataLoader, toCompleteWith expectedResult: FeedImageDataLoader.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
     let url = URL(string: "https://a-given-url.com")!
-    let clientError = NSError(domain: "a client error", code: 0)
     
     let exp = expectation(description: "Wait for load completion")
     sut.loadImageData(from: url) { receivedResult in
@@ -163,14 +166,20 @@ class RemoteFeedImageDataLoaderTests: XCTestCase {
   }
     
   private class HTTPClientSpy: HTTPClient {
+    private struct Task: HTTPClientTask {
+      func cancel() {}
+    }
+    
     var messages = [(url: URL, completion: (HTTPClient.Result) -> Void)]()
+    private var cenclledURLs = [URL]()
     
     var requestedURLs: [URL] {
       return messages.map(\.url)
     }
     
-    func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) {
+    func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) -> HTTPClientTask {
       messages.append((url, completion))
+      return Task()
     }
     
     func complete(with error: Error, at index: Int = 0) {
