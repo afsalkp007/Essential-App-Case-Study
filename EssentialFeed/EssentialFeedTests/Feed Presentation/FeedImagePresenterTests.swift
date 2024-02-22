@@ -18,7 +18,7 @@ class FeedImagePresenterTests: XCTestCase {
   
   func test_didStartLoadingImageData_loadingImage() {
     let (sut, view) = makeSUT()
-    let image = unequeImage()
+    let image = uniqueImage()
 
     sut.didStartLoadingImageData(for: image)
     
@@ -32,7 +32,7 @@ class FeedImagePresenterTests: XCTestCase {
   
   func test_didFinishLoadingImageData_showRetryForFailedImageTransformation() {
     let (sut, view) = makeSUT(imageTransformer: fail)
-    let image = unequeImage()
+    let image = uniqueImage()
 
     sut.didFinishLoadingImageData(with: Data(), for: image)
     
@@ -46,7 +46,7 @@ class FeedImagePresenterTests: XCTestCase {
   }
   
   func test_didFinishLoadingImageData_displayImageOnSuccessfulTransformation() {
-    let image = unequeImage()
+    let image = uniqueImage()
     let transformedData = AnyImage()
     let (sut, view) = makeSUT(imageTransformer: { _ in transformedData })
 
@@ -64,7 +64,7 @@ class FeedImagePresenterTests: XCTestCase {
   
   func test_didFinishLoadingImageDataWithError_displayRetry() {
     let (sut, view) = makeSUT(imageTransformer: fail)
-    let image = unequeImage()
+    let image = uniqueImage()
 
     sut.didFinishLoadingImageData(with: anyNSError(), for: image)
     
