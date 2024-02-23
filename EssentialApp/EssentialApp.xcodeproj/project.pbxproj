@@ -23,6 +23,7 @@
 		F49FC7122B877FFA0084C869 /* FeedImageDataLoaderCacheDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FC7112B877FFA0084C869 /* FeedImageDataLoaderCacheDecorator.swift */; };
 		F49FC71A2B887BF60084C869 /* EssentialAppUIAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FC7192B887BF60084C869 /* EssentialAppUIAcceptanceTests.swift */; };
 		F4C1D2372B88BD660016476B /* DebuggingSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C1D2362B88BD660016476B /* DebuggingSceneDelegate.swift */; };
+		F4C1D2392B88D22A0016476B /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C1D2382B88D22A0016476B /* SceneDelegateTests.swift */; };
 		F4D2AEB32B860E9300E73F73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D2AEB22B860E9300E73F73 /* AppDelegate.swift */; };
 		F4D2AEB52B860E9300E73F73 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D2AEB42B860E9300E73F73 /* SceneDelegate.swift */; };
 		F4D2AEBA2B860E9300E73F73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4D2AEB82B860E9300E73F73 /* Main.storyboard */; };
@@ -85,6 +86,7 @@
 		F49FC7172B887BF60084C869 /* EssentialAppUIAcceptanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialAppUIAcceptanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F49FC7192B887BF60084C869 /* EssentialAppUIAcceptanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialAppUIAcceptanceTests.swift; sourceTree = "<group>"; };
 		F4C1D2362B88BD660016476B /* DebuggingSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebuggingSceneDelegate.swift; sourceTree = "<group>"; };
+		F4C1D2382B88D22A0016476B /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
 		F4D2AEAF2B860E9300E73F73 /* EssentialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EssentialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D2AEB22B860E9300E73F73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4D2AEB42B860E9300E73F73 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				F4562A5A2B868553001FDEFA /* FeedImageDataLoaderWithFallbackCompositeTests.swift */,
 				F4562A732B86AA45001FDEFA /* FeedLoaderCacheDecoratorTests.swift */,
 				F49FC6F52B873F030084C869 /* FeedImageDataLoaderCacheDecoratorTests.swift */,
+				F4C1D2382B88D22A0016476B /* SceneDelegateTests.swift */,
 			);
 			path = EssentialAppTests;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 			files = (
 				F4562A622B869B10001FDEFA /* SharedTestHelpers.swift in Sources */,
 				F49FC6F62B873F030084C869 /* FeedImageDataLoaderCacheDecoratorTests.swift in Sources */,
+				F4C1D2392B88D22A0016476B /* SceneDelegateTests.swift in Sources */,
 				F49FC6F02B8734BA0084C869 /* XCTestCase+FeedLoader.swift in Sources */,
 				F49FC6FC2B87411B0084C869 /* XCTestCase+FeedImageDataLoader.swift in Sources */,
 				F4562A742B86AA45001FDEFA /* FeedLoaderCacheDecoratorTests.swift in Sources */,
