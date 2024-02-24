@@ -70,7 +70,7 @@ final class FeedUIIntegrationTests: XCTestCase {
     let image3 = makeImage(description: nil, location: nil)
     let (sut, loader) = makeSUT()
 
-    sut.simulateAppearance()
+    sut.loadViewIfNeeded()
     assertThat(sut, isRendering: [])
 
     loader.completeFeedLoading(with: [image0], at: 0)
@@ -85,7 +85,7 @@ final class FeedUIIntegrationTests: XCTestCase {
     let image0 = makeImage()
     let (sut, loader) = makeSUT()
 
-    sut.simulateAppearance()
+    sut.loadViewIfNeeded()
     loader.completeFeedLoading(with: [image0], at: 0)
     assertThat(sut, isRendering: [image0])
 
@@ -342,6 +342,20 @@ final class FeedUIIntegrationTests: XCTestCase {
     sut.simulateUserInitiatedFeedReload()
     XCTAssertEqual(sut.errorMessage, nil)
   }
+  
+  func test_loadFeedCompletion_rendersSuccessfullyLoadedEmptyFeedAfterNonEmptyFeed() {
+      let image0 = makeImage()
+      let image1 = makeImage()
+      let (sut, loader) = makeSUT()
+
+      sut.loadViewIfNeeded()
+      loader.completeFeedLoading(with: [image0, image1], at: 0)
+      assertThat(sut, isRendering: [image0, image1])
+
+      sut.simulateUserInitiatedFeedReload()
+      loader.completeFeedLoading(with: [], at: 1)
+      assertThat(sut, isRendering: [])
+  }
 
 
   // MARK: - Helpers
@@ -370,6 +384,9 @@ final class FeedUIIntegrationTests: XCTestCase {
   }
 
   private func assertThat(_ sut: FeedViewController, isRendering feed: [FeedImage], file: StaticString = #file, line: UInt = #line) {
+    sut.tableView.layoutIfNeeded()
+    RunLoop.main.run(until: Date())
+    
     guard sut.numberOfRenderedFeedImageViews() == feed.count else {
       return XCTFail("Expected \(feed.count) images, got \(sut.numberOfRenderedFeedImageViews()) instead.", file: file, line: line)
     }
@@ -377,6 +394,12 @@ final class FeedUIIntegrationTests: XCTestCase {
     feed.enumerated().forEach { index, image in
       assertThat(sut, hasViewConfiguredFor: image, at: index, file: file, line: line)
     }
+    executeRunLoopToCleanUpReferences()
+  }
+  
+  
+  private func executeRunLoopToCleanUpReferences() {
+      RunLoop.current.run(until: Date())
   }
 
   private func assertThat(_ sut: FeedViewController, hasViewConfiguredFor image: FeedImage, at index: Int, file: StaticString = #file, line: UInt = #line) {
