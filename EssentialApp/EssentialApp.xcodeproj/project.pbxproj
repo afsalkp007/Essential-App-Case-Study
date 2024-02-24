@@ -34,6 +34,7 @@
 		F4D2AECA2B860F3100E73F73 /* EssentialFeed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2AEC72B860F3100E73F73 /* EssentialFeed.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F4D2AECB2B860F3100E73F73 /* EssentialFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2AEC82B860F3100E73F73 /* EssentialFeediOS.framework */; };
 		F4D2AECC2B860F3100E73F73 /* EssentialFeediOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2AEC82B860F3100E73F73 /* EssentialFeediOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F4F5A37F2B8A1C2C0092EA71 /* UIImage+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F5A37E2B8A1C2C0092EA71 /* UIImage+TestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		F4D2AEC02B860E9600E73F73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4D2AEC72B860F3100E73F73 /* EssentialFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EssentialFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D2AEC82B860F3100E73F73 /* EssentialFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EssentialFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4F5A37E2B8A1C2C0092EA71 /* UIImage+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TestHelpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				F49FC6EF2B8734BA0084C869 /* XCTestCase+FeedLoader.swift */,
 				F49FC6F92B8740900084C869 /* FeedImageDataLoaderSpy.swift */,
 				F49FC6FB2B87411B0084C869 /* XCTestCase+FeedImageDataLoader.swift */,
+				F4F5A37E2B8A1C2C0092EA71 /* UIImage+TestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				F4562A622B869B10001FDEFA /* SharedTestHelpers.swift in Sources */,
 				F49FC6F62B873F030084C869 /* FeedImageDataLoaderCacheDecoratorTests.swift in Sources */,
 				F4C1D2392B88D22A0016476B /* SceneDelegateTests.swift in Sources */,
+				F4F5A37F2B8A1C2C0092EA71 /* UIImage+TestHelpers.swift in Sources */,
 				F49FC6F02B8734BA0084C869 /* XCTestCase+FeedLoader.swift in Sources */,
 				F49FC6FC2B87411B0084C869 /* XCTestCase+FeedImageDataLoader.swift in Sources */,
 				F4562A742B86AA45001FDEFA /* FeedLoaderCacheDecoratorTests.swift in Sources */,
