@@ -13,9 +13,11 @@ import EssentialFeediOS
 public final class FeedUIComposer {
   private init() {}
   
-  public static func feedComposedWith(feedLoader: @escaping () -> FeedLoader.Publisher, imageLoader: @escaping (URL) -> FeedImageDataLoader.Publisher) -> FeedViewController {
-  let presentationAdapter = FeedLoaderPresentationAdapter(
-          feedLoader: { feedLoader().dispatchOnMainQueue() })
+  public static func feedComposedWith(
+      feedLoader: @escaping () -> FeedLoader.Publisher,
+      imageLoader: @escaping (URL) -> FeedImageDataLoader.Publisher
+  ) -> FeedViewController {
+  let presentationAdapter = FeedLoaderPresentationAdapter(feedLoader: feedLoader)
 
     let feedController = makeWith(
       delegate: presentationAdapter,
@@ -24,7 +26,7 @@ public final class FeedUIComposer {
     presentationAdapter.presenter = FeedPresenter(
       feedView: FeedViewAdapter(
         controller: feedController,
-        imageLoader: { imageLoader($0).dispatchOnMainQueue() }),
+        imageLoader: imageLoader),
       loadingView: WeakRefVirtualProxy(feedController),
       errorView: WeakRefVirtualProxy(feedController))
 
@@ -103,17 +105,19 @@ private final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
   func didRequestFeedRefresh() {
     presenter?.didStartLoadingFeed()
     
-    cancellable = feedLoader().sink(
-        receiveCompletion: { [weak self] completion in
-            switch completion {
-            case .finished: break
+    cancellable = feedLoader()
+        .dispatchOnMainQueue()
+        .sink(
+            receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .finished: break
 
-            case let .failure(error):
-                self?.presenter?.didFinishLoading(with: error)
-            }
-        }, receiveValue: { [weak self] feed in
-            self?.presenter?.didFinishLoadingFeed(with: feed)
-        })
+                case let .failure(error):
+                    self?.presenter?.didFinishLoading(with: error)
+                }
+            }, receiveValue: { [weak self] feed in
+                self?.presenter?.didFinishLoadingFeed(with: feed)
+            })
   }
 }
 
@@ -133,18 +137,20 @@ final class FeedImageDataLoaderPresentationAdapter<View: FeedImageView, Image>: 
     presenter?.didStartLoadingImageData(for: model)
 
     let model = self.model
-    cancellable = imageLoader(model.url).sink(
-        receiveCompletion: { [weak self] completion in
-            switch completion {
-            case .finished: break
+    cancellable = imageLoader(model.url)
+        .dispatchOnMainQueue()
+        .sink(
+            receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .finished: break
 
-            case let .failure(error):
-                self?.presenter?.didFinishLoadingImageData(with: error, for: model)
-            }
+                case let .failure(error):
+                    self?.presenter?.didFinishLoadingImageData(with: error, for: model)
+                }
 
-        }, receiveValue: { [weak self] data in
-            self?.presenter?.didFinishLoadingImageData(with: data, for: model)
-        })
+            }, receiveValue: { [weak self] data in
+                self?.presenter?.didFinishLoadingImageData(with: data, for: model)
+            })
   }
 
   func didCancelImageRequest() {
