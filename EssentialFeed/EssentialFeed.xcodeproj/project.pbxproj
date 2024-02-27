@@ -308,6 +308,7 @@
 		F421CF1C2B6A9DC700754112 /* EssentialFeed */ = {
 			isa = PBXGroup;
 			children = (
+				F4263AE72B8E6B3D0057B75C /* Image Comments API */,
 				F4263AE32B8E6A550057B75C /* Shared API Infra */,
 				F4263AE22B8E6A2F0057B75C /* Shared API */,
 				F4A76D062B8CC22600BBCFAC /* Image Comments Feature */,
@@ -324,6 +325,7 @@
 			children = (
 				F4263AE52B8E6A7D0057B75C /* Shared API Infra */,
 				F4263AE42B8E6A740057B75C /* Shared API */,
+				F4263AE82B8E6B6F0057B75C /* Image Comments API */,
 				F4F355842B833E51003595E3 /* Feed Presentation */,
 				F47BE6A12B6E9B070019FEE2 /* Helpers */,
 				F49655222B7241AB00A87D7B /* Feed Cache */,
@@ -352,8 +354,6 @@
 				F421CF402B6BCF1000754112 /* FeedItemsMapper.swift */,
 				F496552A2B7375E100A87D7B /* RemoteFeedItem.swift */,
 				F4D2AE6E2B84D69200E73F73 /* RemoteFeedImageDataLoader.swift */,
-				F4A76D022B8CB81200BBCFAC /* RemoteImageCommentsLoader.swift */,
-				F4A76D042B8CB91D00BBCFAC /* ImageCommentsMapper.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
@@ -363,7 +363,6 @@
 			children = (
 				F421CF392B6AABB900754112 /* LoadFeedFromRemoteUseCaseTests.swift */,
 				F4F355AD2B83B8D4003595E3 /* LoadFeedImageDataFromRemoteUseCaseTests.swift */,
-				F48CB0DD2B8CB73F0061D14B /* LoadImageCommentsFromRemoteUseCaseTests.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
@@ -407,6 +406,23 @@
 				F4D2AE6C2B84D60E00E73F73 /* HTTPClientSpy.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F4263AE72B8E6B3D0057B75C /* Image Comments API */ = {
+			isa = PBXGroup;
+			children = (
+				F4A76D022B8CB81200BBCFAC /* RemoteImageCommentsLoader.swift */,
+				F4A76D042B8CB91D00BBCFAC /* ImageCommentsMapper.swift */,
+			);
+			path = "Image Comments API";
+			sourceTree = "<group>";
+		};
+		F4263AE82B8E6B6F0057B75C /* Image Comments API */ = {
+			isa = PBXGroup;
+			children = (
+				F48CB0DD2B8CB73F0061D14B /* LoadImageCommentsFromRemoteUseCaseTests.swift */,
+			);
+			path = "Image Comments API";
 			sourceTree = "<group>";
 		};
 		F45275B62B7A1F74001D85BB /* Infrastructure */ = {
