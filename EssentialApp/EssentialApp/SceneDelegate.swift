@@ -19,8 +19,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   }()
   
   let remoteURL = URL(string: "https://ile-api.essentialdeveloper.com/essential-feed/v1/feed")!
-  
-  private lazy var remoteFeedLoader = RemoteLoader(url: remoteURL, client: httpClient, mapper: FeedItemsMapper.map)
 
   private lazy var store: FeedStore & FeedImageDataStore = {
     try! CoreDataFeedStore(
@@ -62,12 +60,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   }
   
   private func makeRemoteFeedLoaderWithLocalFallback() -> FeedLoader.Publisher {
-      return remoteFeedLoader
-          .loadPublisher()
-          .caching(to: localFeedLoader)
-          .fallback(to: localFeedLoader.loadPublisher)
+    return httpClient
+      .getPublisher(url: remoteURL)
+      .tryMap(FeedItemsMapper.map)
+      .caching(to: localFeedLoader)
+      .fallback(to: localFeedLoader.loadPublisher)
   }
-  
+   
   private func makeLocalImageLoaderWithRemoteFallback(url: URL) -> FeedImageDataLoader.Publisher {
       let remoteImageLoader = RemoteFeedImageDataLoader(client: httpClient)
       let localImageLoader = LocalFeedImageDataLoader(store: store)
@@ -83,6 +82,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 }
 
 extension RemoteLoader: FeedLoader where Resource == [FeedImage] {}
+
+public extension HTTPClient {
+    typealias Publisher = AnyPublisher<(Data, HTTPURLResponse), Error>
+
+    func getPublisher(url: URL) -> Publisher {
+        var task: HTTPClientTask?
+
+        return Deferred {
+            Future { completion in
+                task = self.get(from: url, completion: completion)
+            }
+        }
+        .handleEvents(receiveCancel: { task?.cancel() })
+        .eraseToAnyPublisher()
+    }
+}
 
 public extension FeedImageDataLoader {
     typealias Publisher = AnyPublisher<Data, Error>
