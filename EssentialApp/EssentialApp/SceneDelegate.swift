@@ -81,8 +81,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   }
 }
 
-extension RemoteLoader: FeedLoader where Resource == [FeedImage] {}
-
 public extension HTTPClient {
     typealias Publisher = AnyPublisher<(Data, HTTPURLResponse), Error>
 
