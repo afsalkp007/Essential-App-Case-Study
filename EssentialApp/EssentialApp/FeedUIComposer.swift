@@ -14,7 +14,7 @@ public final class FeedUIComposer {
   private init() {}
   
   public static func feedComposedWith(
-      feedLoader: @escaping () -> FeedLoader.Publisher,
+      feedLoader: @escaping () -> AnyPublisher<[FeedImage], Error>,
       imageLoader: @escaping (URL) -> FeedImageDataLoader.Publisher
   ) -> FeedViewController {
   let presentationAdapter = FeedLoaderPresentationAdapter(feedLoader: feedLoader)
@@ -94,11 +94,11 @@ final class FeedViewAdapter: FeedView {
 }
 
 private final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
-  private let feedLoader: () -> FeedLoader.Publisher
+  private let feedLoader: () -> AnyPublisher<[FeedImage], Error>
     private var cancellable: Cancellable?
   var presenter: FeedPresenter?
   
-  init(feedLoader: @escaping () -> FeedLoader.Publisher) {
+  init(feedLoader: @escaping () -> AnyPublisher<[FeedImage], Error>) {
     self.feedLoader = feedLoader
   }
   
