@@ -24,7 +24,7 @@ final class FeedItemsMapper {
     }
   }
 
-  internal static func map(_ data: Data, _ response: HTTPURLResponse) throws -> [FeedImage] {
+  static func map(_ data: Data, _ response: HTTPURLResponse) throws -> [FeedImage] {
     guard response.isOK,
           let root = try? JSONDecoder().decode(Root.self, from: data) else {
       throw RemoteFeedLoader.Error.invlalidData
