@@ -43,8 +43,8 @@ public final class FeedUIComposer {
   }
 }
 
-extension WeakRefVirtualProxy: FeedErrorView where T: FeedErrorView {
-  func display(_ viewModel: FeedErrorViewModel) {
+extension WeakRefVirtualProxy: ResourceErrorView where T: ResourceErrorView {
+  func display(_ viewModel: ResourceErrorViewModel) {
     object?.display(viewModel)
   }
 }
