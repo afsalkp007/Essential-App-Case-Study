@@ -637,8 +637,8 @@
 				F4F355962B835D53003595E3 /* FeedPresenter.swift */,
 				F4F355922B835A79003595E3 /* Feed.strings */,
 				F4F355992B835FB1003595E3 /* FeedViewModel.swift */,
-				F4F355A82B83A5E3003595E3 /* FeedImagePresenter.swift */,
 				F4F355AA2B83A616003595E3 /* FeedImageViewModel.swift */,
+				F4F355A82B83A5E3003595E3 /* FeedImagePresenter.swift */,
 			);
 			path = "Feed Presentation";
 			sourceTree = "<group>";
