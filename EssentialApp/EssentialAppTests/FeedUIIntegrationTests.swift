@@ -19,7 +19,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 
     sut.simulateAppearance()
 
-    XCTAssertEqual(sut.title, localized("FEED_VIEW_TITLE"))
+    XCTAssertEqual(sut.title, feedTitle)
   }
   
   func test_loadFeedActions_requestFeedFromLoader() {
@@ -338,7 +338,7 @@ final class FeedUIIntegrationTests: XCTestCase {
     XCTAssertEqual(sut.errorMessage, nil)
 
     loader.completeFeedLoadingWithError(at: 0)
-    XCTAssertEqual(sut.errorMessage, localized("GENERIC_CONNECTION_ERROR"))
+    XCTAssertEqual(sut.errorMessage, loadError)
     
     sut.simulateUserInitiatedFeedReload()
     XCTAssertEqual(sut.errorMessage, nil)
@@ -361,8 +361,19 @@ final class FeedUIIntegrationTests: XCTestCase {
 
   // MARK: - Helpers
   
-  func localized(_ key: String, file: StaticString = #file, line: UInt = #line) -> String {
-    let table = "Feed"
+  var loadError: String {
+    LoadResourcePresenter<Any, DummyView>.loadError
+  }
+  
+  var feedTitle: String {
+    FeedPresenter.title
+  }
+  
+  private struct DummyView: ResourceView {
+    func display(_ viewModel: Any) {}
+  }
+  
+  func localized(_ key: String, table: String = "Feed", file: StaticString = #file, line: UInt = #line) -> String {
     let bundle = Bundle(for: FeedPresenter.self)
     let value = bundle.localizedString(forKey: key, value: nil, table: table)
     if value == key {
