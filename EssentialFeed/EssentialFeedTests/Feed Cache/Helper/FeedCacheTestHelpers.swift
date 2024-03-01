@@ -23,18 +23,7 @@ extension Date {
     return adding(days: -feedCacehMaxAgeInDays)
   }
   
-  private var feedCacehMaxAgeInDays: Int {
+  var feedCacehMaxAgeInDays: Int {
     return 7
   }
-  
-  private func adding(days: Int) -> Date {
-    return Calendar(identifier: .gregorian).date(byAdding: .day, value: days, to: self)!
-  }
 }
-
-extension Date {
-  func adding(seconds: TimeInterval) -> Date {
-    return self + seconds
-  }
-}
-
