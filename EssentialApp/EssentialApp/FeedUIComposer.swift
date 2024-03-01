@@ -18,7 +18,7 @@ public final class FeedUIComposer {
   public static func feedComposedWith(
       feedLoader: @escaping () -> AnyPublisher<[FeedImage], Error>,
       imageLoader: @escaping (URL) -> FeedImageDataLoader.Publisher
-  ) -> FeedViewController {
+  ) -> ListViewController {
   let presentationAdapter = FeedPresentationAdapter(loader: feedLoader)
 
     let feedController = makeWith(
@@ -36,10 +36,10 @@ public final class FeedUIComposer {
     return feedController
   }
   
-  private static func makeWith(delegate: FeedViewControllerDelegate, title: String) -> FeedViewController {
-    let bundle = Bundle(for: FeedViewController.self)
+  private static func makeWith(delegate: FeedViewControllerDelegate, title: String) -> ListViewController {
+    let bundle = Bundle(for: ListViewController.self)
     let storyboard = UIStoryboard(name: "Feed", bundle: bundle)
-    let feedController = storyboard.instantiateInitialViewController() as! FeedViewController
+    let feedController = storyboard.instantiateInitialViewController() as! ListViewController
     feedController.delegate = delegate
     feedController.title = title
     return feedController
@@ -74,10 +74,10 @@ extension WeakRefVirtualProxy: ResourceView where T: ResourceView, T.ResourceVie
 
 
 final class FeedViewAdapter: ResourceView {
-  private weak var controller: FeedViewController?
+  private weak var controller: ListViewController?
   private let imageLoader: (URL) -> FeedImageDataLoader.Publisher
 
-  init(controller: FeedViewController, imageLoader: @escaping (URL) -> FeedImageDataLoader.Publisher) {
+  init(controller: ListViewController, imageLoader: @escaping (URL) -> FeedImageDataLoader.Publisher) {
     self.controller = controller
     self.imageLoader = imageLoader
   }

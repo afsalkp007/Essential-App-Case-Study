@@ -383,7 +383,7 @@ final class FeedUIIntegrationTests: XCTestCase {
   }
 
   
-  private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
+  private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: ListViewController, loader: LoaderSpy) {
     let loader = LoaderSpy()
     let sut = FeedUIComposer.feedComposedWith(feedLoader: loader.loadPublisher, imageLoader: loader.loadImageDataPublisher)
     trackForMemoryLeaks(loader, file: file, line: line)
@@ -395,7 +395,7 @@ final class FeedUIIntegrationTests: XCTestCase {
     return UIImage.make(withColor: .red).pngData()!
   }
 
-  private func assertThat(_ sut: FeedViewController, isRendering feed: [FeedImage], file: StaticString = #file, line: UInt = #line) {
+  private func assertThat(_ sut: ListViewController, isRendering feed: [FeedImage], file: StaticString = #file, line: UInt = #line) {
     sut.tableView.layoutIfNeeded()
     RunLoop.main.run(until: Date())
     
@@ -414,7 +414,7 @@ final class FeedUIIntegrationTests: XCTestCase {
       RunLoop.current.run(until: Date())
   }
 
-  private func assertThat(_ sut: FeedViewController, hasViewConfiguredFor image: FeedImage, at index: Int, file: StaticString = #file, line: UInt = #line) {
+  private func assertThat(_ sut: ListViewController, hasViewConfiguredFor image: FeedImage, at index: Int, file: StaticString = #file, line: UInt = #line) {
     let view = sut.feedImageView(at: index)
 
     guard let cell = view as? FeedImageCell else {
@@ -490,7 +490,7 @@ final class FeedUIIntegrationTests: XCTestCase {
   }
 }
 
-extension FeedViewController {
+extension ListViewController {
   func simulateUserInitiatedFeedReload() {
     refreshControl?.simulatePullToRefresh()
   }
@@ -541,7 +541,7 @@ extension FeedViewController {
 }
 
 
-extension FeedViewController {
+extension ListViewController {
   func simulateAppearance() {
     if !isViewLoaded {
       loadViewIfNeeded()
