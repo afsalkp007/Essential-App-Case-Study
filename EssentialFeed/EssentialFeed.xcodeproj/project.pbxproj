@@ -483,6 +483,40 @@
 			path = "Image Comments Presentation";
 			sourceTree = "<group>";
 		};
+		F4263B1E2B91E7AB0057B75C /* Shared UI */ = {
+			isa = PBXGroup;
+			children = (
+				F4263B1F2B91E7D20057B75C /* Controllers */,
+				F4263B202B91E7D80057B75C /* Views */,
+			);
+			path = "Shared UI";
+			sourceTree = "<group>";
+		};
+		F4263B1F2B91E7D20057B75C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F4A2463E2B7E1ED600A7BBD7 /* ListViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F4263B202B91E7D80057B75C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F4263B212B91E8040057B75C /* Helpers */,
+				F4F3558A2B8349DC003595E3 /* ErrorView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F4263B212B91E8040057B75C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F4F5A3882B8A1DC60092EA71 /* UITableView+HeaderSizing.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		F45275B62B7A1F74001D85BB /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
@@ -543,7 +577,6 @@
 		F48A02952B7F858B0014DEB8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F4A2463E2B7E1ED600A7BBD7 /* ListViewController.swift */,
 				F48A02992B7F92AD0014DEB8 /* FeedImageCellController.swift */,
 			);
 			path = Controller;
@@ -557,7 +590,6 @@
 				F48A02892B7F1DE70014DEB8 /* UIView+Shimmering.swift */,
 				F48A02B52B81E5290014DEB8 /* Feed.storyboard */,
 				F48A02B72B81E5C40014DEB8 /* Feed.xcassets */,
-				F4F3558A2B8349DC003595E3 /* ErrorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -613,6 +645,7 @@
 		F4A246272B7CF4BF00A7BBD7 /* EssentialFeediOS */ = {
 			isa = PBXGroup;
 			children = (
+				F4263B1E2B91E7AB0057B75C /* Shared UI */,
 				F48A02942B7F85860014DEB8 /* Feed UI */,
 			);
 			path = EssentialFeediOS;
@@ -684,7 +717,6 @@
 		F4F5A3872B8A1DB40092EA71 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				F4F5A3882B8A1DC60092EA71 /* UITableView+HeaderSizing.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
