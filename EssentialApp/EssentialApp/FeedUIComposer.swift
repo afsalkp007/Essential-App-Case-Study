@@ -13,11 +13,13 @@ import EssentialFeediOS
 public final class FeedUIComposer {
   private init() {}
   
+  private typealias FeedPresentationAdapter = LoadResourcePresentationAdapter<[FeedImage], FeedViewAdapter>
+  
   public static func feedComposedWith(
       feedLoader: @escaping () -> AnyPublisher<[FeedImage], Error>,
       imageLoader: @escaping (URL) -> FeedImageDataLoader.Publisher
   ) -> FeedViewController {
-  let presentationAdapter = LoadResourcePresentationAdapter<[FeedImage], FeedViewAdapter>(loader: feedLoader)
+  let presentationAdapter = FeedPresentationAdapter(loader: feedLoader)
 
     let feedController = makeWith(
       delegate: presentationAdapter,
@@ -93,18 +95,21 @@ final class FeedViewAdapter: ResourceView {
         resourceView: WeakRefVirtualProxy(view),
         loadingView: WeakRefVirtualProxy(view),
         errorView: WeakRefVirtualProxy(view),
-        mapper: { data in
-          guard let image = UIImage(data: data) else {
-            throw InvalidData()
-          }
-          return image
-        })
+        mapper: UIImage.tryMake)
 
       return view
     })
   }
 }
 
-private struct InvalidData: Error {}
 
+extension UIImage {
+  private struct InvalidData: Error {}
 
+  static func tryMake(_ data: Data) throws -> UIImage {
+    guard let image = UIImage(data: data) else {
+      throw InvalidData()
+    }
+    return image
+  }
+}
