@@ -357,6 +357,19 @@ final class FeedUIIntegrationTests: XCTestCase {
       loader.completeFeedLoading(with: [], at: 1)
       assertThat(sut, isRendering: [])
   }
+  
+  func test_tapOnErrorView_hidesErrorMessage() {
+      let (sut, loader) = makeSUT()
+
+      sut.loadViewIfNeeded()
+      XCTAssertEqual(sut.errorMessage, nil)
+
+      loader.completeFeedLoadingWithError(at: 0)
+      XCTAssertEqual(sut.errorMessage, loadError)
+
+      sut.simulateErrorViewTap()
+      XCTAssertEqual(sut.errorMessage, nil)
+  }
 
 
   // MARK: - Helpers
@@ -512,7 +525,7 @@ extension ListViewController {
   }
   
   var errorMessage: String? {
-    return errorView?.message
+    return errorView.message
   }
   
   func simulateFeedImageViewNearVisible(at row: Int) {
@@ -533,7 +546,10 @@ extension ListViewController {
     return simulateFeedImageViewVisible(at: index)?.renderedImage
   }
 
-  
+  func simulateErrorViewTap() {
+      errorView.simulateTap()
+  }
+
   var isShowingLoadingIndicator: Bool {
     return refreshControl?.isRefreshing == true
   }
