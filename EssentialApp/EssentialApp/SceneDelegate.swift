@@ -95,14 +95,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       last.map { lastItem in
           let url = FeedEndpoint.get(after: lastItem).url(baseURL: baseURL)
 
-          return { [httpClient] in
+        return { [httpClient, localFeedLoader] in
               httpClient
                   .getPublisher(url: url)
                   .tryMap(FeedItemsMapper.map)
                   .map { newItems in
                       let allItems = items + newItems
                       return Paginated(items: allItems, loadMorePublisher: self.makeRemoteLoadMoreLoader(items: allItems, last: newItems.last))
-                  }.eraseToAnyPublisher()
+                  }
+                  .caching(to: localFeedLoader)
           }
       }
   }
@@ -184,8 +185,12 @@ extension Publisher {
     }
 }
 
-extension Publisher where Output == [FeedImage] {
-    func caching(to cache: FeedCache) -> AnyPublisher<Output, Failure> {
+extension Publisher {
+    func caching(to cache: FeedCache) -> AnyPublisher<Output, Failure> where Output == [FeedImage] {
+        handleEvents(receiveOutput: cache.saveIgnoringResult).eraseToAnyPublisher()
+    }
+
+    func caching(to cache: FeedCache) -> AnyPublisher<Output, Failure> where Output == Paginated<FeedImage> {
         handleEvents(receiveOutput: cache.saveIgnoringResult).eraseToAnyPublisher()
     }
 }
@@ -194,6 +199,10 @@ private extension FeedCache {
     func saveIgnoringResult(_ feed: [FeedImage]) {
         save(feed) { _ in }
     }
+  
+  func saveIgnoringResult(_ page: Paginated<FeedImage>) {
+      saveIgnoringResult(page.items)
+  }
 }
 
 extension Publisher {
