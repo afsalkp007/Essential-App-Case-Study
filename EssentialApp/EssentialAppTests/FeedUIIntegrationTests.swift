@@ -387,6 +387,16 @@ class FeedUIIntegrationTests: XCTestCase {
       XCTAssertEqual(sut.errorMessage, nil)
   }
 
+  func test_loadMoreActions_requestMoreFromLoader() {
+      let (sut, loader) = makeSUT()
+      sut.loadViewIfNeeded()
+      loader.completeFeedLoading()
+
+      XCTAssertEqual(loader.loadMoreCallCount, 0, "Expected no requests before until load more action")
+
+      sut.simulateLoadMoreFeedAction()
+      XCTAssertEqual(loader.loadMoreCallCount, 1, "Expected load more request")
+  }
 
   // MARK: - Helpers
   
@@ -478,6 +488,8 @@ class FeedUIIntegrationTests: XCTestCase {
       return feedRequests.count
     }
     
+    private(set) var loadMoreCallCount = 0
+    
     func loadPublisher() -> AnyPublisher<Paginated<FeedImage>, Error> {
         let publisher = PassthroughSubject<Paginated<FeedImage>, Error>()
       feedRequests.append(publisher)
@@ -485,7 +497,9 @@ class FeedUIIntegrationTests: XCTestCase {
     }
 
     func completeFeedLoading(with feed: [FeedImage] = [], at index: Int = 0) {
-      feedRequests[index].send(Paginated(items: feed))
+      feedRequests[index].send(Paginated(items: feed, loadMore: { [weak self] _ in
+          self?.loadMoreCallCount += 1
+      }))
     }
     
     func completeFeedLoadingWithError(at index: Int = 0) {
@@ -576,6 +590,14 @@ extension ListViewController {
     ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [index])
   }
   
+  func simulateLoadMoreFeedAction() {
+      guard let view = cell(row: 0, section: feedLoadMoreSection) else { return }
+
+      let delegate = tableView.delegate
+      let index = IndexPath(row: 0, section: feedLoadMoreSection)
+      delegate?.tableView?(tableView, willDisplay: view, forRowAt: index)
+  }
+  
   func renderedFeedImageData(at index: Int) -> Data? {
     return simulateFeedImageViewVisible(at: index)?.renderedImage
   }
@@ -586,6 +608,19 @@ extension ListViewController {
 
   var isShowingLoadingIndicator: Bool {
     return refreshControl?.isRefreshing == true
+  }
+  
+  func numberOfRows(in section: Int) -> Int {
+      tableView.numberOfSections > section ? tableView.numberOfRows(inSection: section) : 0
+  }
+
+  func cell(row: Int, section: Int) -> UITableViewCell? {
+      guard numberOfRows(in: section) > row else {
+          return nil
+      }
+      let ds = tableView.dataSource
+      let index = IndexPath(row: row, section: section)
+      return ds?.tableView(tableView, cellForRowAt: index)
   }
 
 }
@@ -638,7 +673,7 @@ extension ListViewController {
   private var feedImagesSection: Int {
     return 0
   }
-
+    private var feedLoadMoreSection: Int { 1 }
 
 }
 
