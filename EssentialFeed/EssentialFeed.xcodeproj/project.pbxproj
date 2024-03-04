@@ -31,6 +31,8 @@
 		F4263B3E2B91F5400057B75C /* ImageCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4263B3D2B91F5400057B75C /* ImageCommentCell.swift */; };
 		F4263B402B91F5650057B75C /* ImageComments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4263B3F2B91F5650057B75C /* ImageComments.storyboard */; };
 		F4263B4C2B920FE90057B75C /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4263B4B2B920FE90057B75C /* CellController.swift */; };
+		F42BE16A2B95D8A80033007F /* FeedEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42BE1692B95D8A80033007F /* FeedEndPoint.swift */; };
+		F42BE16C2B95D8E60033007F /* ImageCommentsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42BE16B2B95D8E60033007F /* ImageCommentsEndpoint.swift */; };
 		F43AF6E72B8A181A0016D197 /* FeedSnapShotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43AF6E62B8A181A0016D197 /* FeedSnapShotTests.swift */; };
 		F45275A42B792C2F001D85BB /* FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45275A22B792BE3001D85BB /* FeedStoreSpecs.swift */; };
 		F45275A62B792CB6001D85BB /* XCTestCase+FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45275A52B792CB6001D85BB /* XCTestCase+FeedStoreSpecs.swift */; };
@@ -201,6 +203,8 @@
 		F4263B3D2B91F5400057B75C /* ImageCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCommentCell.swift; sourceTree = "<group>"; };
 		F4263B3F2B91F5650057B75C /* ImageComments.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImageComments.storyboard; sourceTree = "<group>"; };
 		F4263B4B2B920FE90057B75C /* CellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellController.swift; sourceTree = "<group>"; };
+		F42BE1692B95D8A80033007F /* FeedEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEndPoint.swift; sourceTree = "<group>"; };
+		F42BE16B2B95D8E60033007F /* ImageCommentsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCommentsEndpoint.swift; sourceTree = "<group>"; };
 		F43AF6E62B8A181A0016D197 /* FeedSnapShotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSnapShotTests.swift; sourceTree = "<group>"; };
 		F45275A22B792BE3001D85BB /* FeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreSpecs.swift; sourceTree = "<group>"; };
 		F45275A52B792CB6001D85BB /* XCTestCase+FeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FeedStoreSpecs.swift"; sourceTree = "<group>"; };
@@ -416,6 +420,7 @@
 				F421CF402B6BCF1000754112 /* FeedItemsMapper.swift */,
 				F4D2AE6E2B84D69200E73F73 /* RemoteFeedImageDataLoader.swift */,
 				F4263AEF2B8F62F20057B75C /* FeedImageDataMapper.swift */,
+				F42BE1692B95D8A80033007F /* FeedEndPoint.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
@@ -473,6 +478,7 @@
 			isa = PBXGroup;
 			children = (
 				F4A76D042B8CB91D00BBCFAC /* ImageCommentsMapper.swift */,
+				F42BE16B2B95D8E60033007F /* ImageCommentsEndpoint.swift */,
 			);
 			path = "Image Comments API";
 			sourceTree = "<group>";
@@ -1112,9 +1118,11 @@
 				F421CF342B6A9DFD00754112 /* FeedImage.swift in Sources */,
 				F4263B052B904B810057B75C /* ResourceErrorView.swift in Sources */,
 				F47BE6A52B6EBC220019FEE2 /* URLSessionHTTPClient.swift in Sources */,
+				F42BE16C2B95D8E60033007F /* ImageCommentsEndpoint.swift in Sources */,
 				F4F3559E2B835FD2003595E3 /* ResourceErrorViewModel.swift in Sources */,
 				F4263B032B904AF70057B75C /* ResourceLoadingView.swift in Sources */,
 				F49FC6FE2B8743740084C869 /* FeedImageDataCache.swift in Sources */,
+				F42BE16A2B95D8A80033007F /* FeedEndPoint.swift in Sources */,
 				F4263B0F2B90840A0057B75C /* ImageCommentsPresenter.swift in Sources */,
 				F4F355AC2B83B864003595E3 /* FeedImageDataLoader.swift in Sources */,
 				F4F3559C2B835FC0003595E3 /* ResourceLoadingViewModel.swift in Sources */,
