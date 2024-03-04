@@ -33,6 +33,8 @@
 		F4263B4C2B920FE90057B75C /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4263B4B2B920FE90057B75C /* CellController.swift */; };
 		F42BE16A2B95D8A80033007F /* FeedEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42BE1692B95D8A80033007F /* FeedEndPoint.swift */; };
 		F42BE16C2B95D8E60033007F /* ImageCommentsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42BE16B2B95D8E60033007F /* ImageCommentsEndpoint.swift */; };
+		F42BE1722B95F5CA0033007F /* LoadMoreCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42BE1712B95F5CA0033007F /* LoadMoreCellController.swift */; };
+		F42BE1742B95F5DE0033007F /* LoadMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42BE1732B95F5DE0033007F /* LoadMoreCell.swift */; };
 		F43AF6E72B8A181A0016D197 /* FeedSnapShotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43AF6E62B8A181A0016D197 /* FeedSnapShotTests.swift */; };
 		F45275A42B792C2F001D85BB /* FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45275A22B792BE3001D85BB /* FeedStoreSpecs.swift */; };
 		F45275A62B792CB6001D85BB /* XCTestCase+FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45275A52B792CB6001D85BB /* XCTestCase+FeedStoreSpecs.swift */; };
@@ -205,6 +207,8 @@
 		F4263B4B2B920FE90057B75C /* CellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellController.swift; sourceTree = "<group>"; };
 		F42BE1692B95D8A80033007F /* FeedEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEndPoint.swift; sourceTree = "<group>"; };
 		F42BE16B2B95D8E60033007F /* ImageCommentsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCommentsEndpoint.swift; sourceTree = "<group>"; };
+		F42BE1712B95F5CA0033007F /* LoadMoreCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreCellController.swift; sourceTree = "<group>"; };
+		F42BE1732B95F5DE0033007F /* LoadMoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreCell.swift; sourceTree = "<group>"; };
 		F43AF6E62B8A181A0016D197 /* FeedSnapShotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSnapShotTests.swift; sourceTree = "<group>"; };
 		F45275A22B792BE3001D85BB /* FeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreSpecs.swift; sourceTree = "<group>"; };
 		F45275A52B792CB6001D85BB /* XCTestCase+FeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FeedStoreSpecs.swift"; sourceTree = "<group>"; };
@@ -691,6 +695,7 @@
 			isa = PBXGroup;
 			children = (
 				F48A02992B7F92AD0014DEB8 /* FeedImageCellController.swift */,
+				F42BE1712B95F5CA0033007F /* LoadMoreCellController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -702,6 +707,7 @@
 				F48A02892B7F1DE70014DEB8 /* UIView+Shimmering.swift */,
 				F48A02B52B81E5290014DEB8 /* Feed.storyboard */,
 				F48A02B72B81E5C40014DEB8 /* Feed.xcassets */,
+				F42BE1732B95F5DE0033007F /* LoadMoreCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1189,11 +1195,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F42BE1742B95F5DE0033007F /* LoadMoreCell.swift in Sources */,
 				F47D73E72B935F4F00275F38 /* UIView+Container.swift in Sources */,
 				F4263B4C2B920FE90057B75C /* CellController.swift in Sources */,
 				F4F5A3892B8A1DC60092EA71 /* UITableView+HeaderSizing.swift in Sources */,
 				F48A028A2B7F1DE70014DEB8 /* UIView+Shimmering.swift in Sources */,
 				F4A2463F2B7E1ED600A7BBD7 /* ListViewController.swift in Sources */,
+				F42BE1722B95F5CA0033007F /* LoadMoreCellController.swift in Sources */,
 				F48A02882B7F148E0014DEB8 /* FeedImageCell.swift in Sources */,
 				F48A029A2B7F92AD0014DEB8 /* FeedImageCellController.swift in Sources */,
 				F4263B3C2B91F5120057B75C /* ImageCommentCellController.swift in Sources */,
