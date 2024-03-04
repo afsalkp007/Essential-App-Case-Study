@@ -29,10 +29,10 @@ class FeedUIIntegrationTests: XCTestCase {
     sut.simulateAppearance()
     XCTAssertEqual(loader.loadFeedCallCount, 1, "Expected a loading request once view is loaded")
 
-    sut.simulateUserInitiatedFeedReload()
+    sut.simulateUserInitiatedReload()
     XCTAssertEqual(loader.loadFeedCallCount, 2, "Expected another loading request once user initiates a reload")
 
-    sut.simulateUserInitiatedFeedReload()
+    sut.simulateUserInitiatedReload()
     XCTAssertEqual(loader.loadFeedCallCount, 3, "Expected yet another loading request once user initiates another reload")
 
   }
@@ -57,7 +57,7 @@ class FeedUIIntegrationTests: XCTestCase {
     loader.completeFeedLoading(at: 0)
     XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once loading completes successfully")
 
-    sut.simulateUserInitiatedFeedReload()
+    sut.simulateUserInitiatedReload()
     XCTAssertTrue(sut.isShowingLoadingIndicator, "Expected loading indicator once user initiates a reload")
 
     loader.completeFeedLoadingWithError(at: 1)
@@ -77,7 +77,7 @@ class FeedUIIntegrationTests: XCTestCase {
     loader.completeFeedLoading(with: [image0], at: 0)
     assertThat(sut, isRendering: [image0])
 
-    sut.simulateUserInitiatedFeedReload()
+    sut.simulateUserInitiatedReload()
     loader.completeFeedLoading(with: [image0, image1, image2, image3], at: 1)
     assertThat(sut, isRendering: [image0, image1, image2, image3])
   }
@@ -90,7 +90,7 @@ class FeedUIIntegrationTests: XCTestCase {
     loader.completeFeedLoading(with: [image0], at: 0)
     assertThat(sut, isRendering: [image0])
 
-    sut.simulateUserInitiatedFeedReload()
+    sut.simulateUserInitiatedReload()
     loader.completeFeedLoadingWithError(at: 1)
     assertThat(sut, isRendering: [image0])
   }
@@ -340,7 +340,7 @@ class FeedUIIntegrationTests: XCTestCase {
     loader.completeFeedLoadingWithError(at: 0)
     XCTAssertEqual(sut.errorMessage, loadError)
     
-    sut.simulateUserInitiatedFeedReload()
+    sut.simulateUserInitiatedReload()
     XCTAssertEqual(sut.errorMessage, nil)
   }
   
@@ -353,7 +353,7 @@ class FeedUIIntegrationTests: XCTestCase {
       loader.completeFeedLoading(with: [image0, image1], at: 0)
       assertThat(sut, isRendering: [image0, image1])
 
-      sut.simulateUserInitiatedFeedReload()
+      sut.simulateUserInitiatedReload()
       loader.completeFeedLoading(with: [], at: 1)
       assertThat(sut, isRendering: [])
   }
@@ -396,6 +396,10 @@ class FeedUIIntegrationTests: XCTestCase {
   
   var feedTitle: String {
     FeedPresenter.title
+  }
+  
+  var commentsTitle: String {
+    ImageCommentsPresenter.title
   }
   
   private struct DummyView: ResourceView {
@@ -508,7 +512,7 @@ extension ListViewController {
       tableView.frame = CGRect(x: 0, y: 0, width: 1, height: 1)
   }
   
-  func simulateUserInitiatedFeedReload() {
+  func simulateUserInitiatedReload() {
     refreshControl?.simulatePullToRefresh()
   }
   
