@@ -6,13 +6,13 @@
 //
 
 import XCTest
+import Combine
 import UIKit
 import EssentialFeed
 import EssentialFeediOS
 import EssentialApp
-import Combine
 
-class CommentsUIIntegrationTests: FeedUIIntegrationTests {
+class CommentsUIIntegrationTests: XCTestCase {
   func test_commentsView_hasTitle() {
     let (sut, _) = makeSUT()
 
@@ -94,18 +94,7 @@ class CommentsUIIntegrationTests: FeedUIIntegrationTests {
     assertThat(sut, isRendering: [comment])
   }
   
-  override func test_loadFeedActions_runsAutomaticallyOnlyOnFirstAppearance() {
-    let (sut, loader) = makeSUT()
-    XCTAssertEqual(loader.loadCommentsCallCount, 0, "Expected no loading requests before view appears")
-
-    sut.simulateAppearance()
-    XCTAssertEqual(loader.loadCommentsCallCount, 1, "Expected a loading request once view appears")
-
-    sut.simulateAppearance()
-    XCTAssertEqual(loader.loadCommentsCallCount, 1, "Expected no loading request the second time view appears")
-  }
-  
-  override func test_loadFeedCompletion_dispatchesFromBackgroundToMainThread() {
+  func test_loadCommentsCompletion_dispatchesFromBackgroundToMainThread() {
     let (sut, loader) = makeSUT()
     sut.simulateAppearance()
 
@@ -116,14 +105,13 @@ class CommentsUIIntegrationTests: FeedUIIntegrationTests {
     }
     wait(for: [exp], timeout: 1.0)
   }
-
-  override func test_loadFeedCompletion_rendersErrorMessageOnErrorUntilNextReload() {
+  
+  func test_loadCommentsCompletion_rendersErrorMessageOnErrorUntilNextReload() {
     let (sut, loader) = makeSUT()
-
+    
     sut.simulateAppearance()
-
     XCTAssertEqual(sut.errorMessage, nil)
-
+    
     loader.completeCommentsLoadingWithError(at: 0)
     XCTAssertEqual(sut.errorMessage, loadError)
     
@@ -131,7 +119,7 @@ class CommentsUIIntegrationTests: FeedUIIntegrationTests {
     XCTAssertEqual(sut.errorMessage, nil)
   }
   
-  override func test_tapOnErrorView_hidesErrorMessage() {
+  func test_tapOnErrorView_hidesErrorMessage() {
       let (sut, loader) = makeSUT()
 
       sut.loadViewIfNeeded()
@@ -144,8 +132,19 @@ class CommentsUIIntegrationTests: FeedUIIntegrationTests {
       XCTAssertEqual(sut.errorMessage, nil)
   }
 
-
   // MARK: - Helpers
+  
+  var commentsTitle: String {
+    ImageCommentsPresenter.title
+  }
+  
+  var loadError: String {
+    LoadResourcePresenter<Any, DummyView>.loadError
+  }
+  
+  private struct DummyView: ResourceView {
+    func display(_ viewModel: Any) {}
+  }
   
   private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: ListViewController, loader: LoaderSpy) {
     let loader = LoaderSpy()

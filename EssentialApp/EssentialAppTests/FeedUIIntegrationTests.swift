@@ -398,10 +398,6 @@ class FeedUIIntegrationTests: XCTestCase {
     FeedPresenter.title
   }
   
-  var commentsTitle: String {
-    ImageCommentsPresenter.title
-  }
-  
   private struct DummyView: ResourceView {
     func display(_ viewModel: Any) {}
   }
