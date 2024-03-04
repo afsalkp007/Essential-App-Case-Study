@@ -15,6 +15,7 @@
 		F42BE1682B95B9680033007F /* CommentsUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42BE1672B95B9680033007F /* CommentsUIComposer.swift */; };
 		F42BE16E2B95D97A0033007F /* ImageCommentsEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42BE16D2B95D97A0033007F /* ImageCommentsEndpointTests.swift */; };
 		F42BE1702B95D98B0033007F /* FeedEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42BE16F2B95D98B0033007F /* FeedEndpointTests.swift */; };
+		F42BE19D2B962DC10033007F /* CombineHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42BE19C2B962DC10033007F /* CombineHelpers.swift */; };
 		F4562A602B869A78001FDEFA /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4562A5F2B869A78001FDEFA /* XCTestCase+MemoryLeakTracking.swift */; };
 		F4562A622B869B10001FDEFA /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4562A612B869B10001FDEFA /* SharedTestHelpers.swift */; };
 		F4C1D2392B88D22A0016476B /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C1D2382B88D22A0016476B /* SceneDelegateTests.swift */; };
@@ -63,6 +64,7 @@
 		F42BE1672B95B9680033007F /* CommentsUIComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsUIComposer.swift; sourceTree = "<group>"; };
 		F42BE16D2B95D97A0033007F /* ImageCommentsEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCommentsEndpointTests.swift; sourceTree = "<group>"; };
 		F42BE16F2B95D98B0033007F /* FeedEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEndpointTests.swift; sourceTree = "<group>"; };
+		F42BE19C2B962DC10033007F /* CombineHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineHelpers.swift; sourceTree = "<group>"; };
 		F4562A472B86602F001FDEFA /* EssentialAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4562A5F2B869A78001FDEFA /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		F4562A612B869B10001FDEFA /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			children = (
 				F4D2AEB22B860E9300E73F73 /* AppDelegate.swift */,
 				F4D2AEB42B860E9300E73F73 /* SceneDelegate.swift */,
+				F42BE19C2B962DC10033007F /* CombineHelpers.swift */,
 				F4D2AEBB2B860E9600E73F73 /* Assets.xcassets */,
 				F4D2AEBD2B860E9600E73F73 /* LaunchScreen.storyboard */,
 				F4D2AEC02B860E9600E73F73 /* Info.plist */,
@@ -287,6 +290,7 @@
 				F4263B072B9052560057B75C /* LoadResourcePresentationAdapter.swift in Sources */,
 				F4D2AEB52B860E9300E73F73 /* SceneDelegate.swift in Sources */,
 				F42BE1682B95B9680033007F /* CommentsUIComposer.swift in Sources */,
+				F42BE19D2B962DC10033007F /* CombineHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
