@@ -61,12 +61,12 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
   }
   
   public func display(_ sections: [CellController]...) {
-    var snapshot = NSDiffableDataSourceSnapshot<Int, CellController>()
+    var snapShot = NSDiffableDataSourceSnapshot<Int, CellController>()
     sections.enumerated().forEach { section, cellControllers in
-        snapshot.appendSections([section])
-        snapshot.appendItems(cellControllers, toSection: section)
+        snapShot.appendSections([section])
+        snapShot.appendItems(cellControllers, toSection: section)
     }
-    dataSource.apply(snapshot)
+    dataSource.apply(snapShot, animatingDifferences: false)
   }
   
   public func display(_ viewModel: ResourceErrorViewModel) {
