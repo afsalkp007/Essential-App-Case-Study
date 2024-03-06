@@ -1,5 +1,5 @@
 //
-//  RemoteFeedImageDataLoaderTests.swift
+//  FeedImageDataMapperTests.swift
 //  EssentialFeedTests
 //
 //  Created by Afsal on 19/02/2024.
