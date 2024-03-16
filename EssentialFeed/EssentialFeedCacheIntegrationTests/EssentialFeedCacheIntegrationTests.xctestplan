@@ -1,7 +1,7 @@
 {
   "configurations" : [
     {
-      "id" : "2ED79A94-A43B-4F65-8FCC-B7A58C15588B",
+      "id" : "AD244CCD-9758-4372-8B3F-9B3133F92551",
       "name" : "Configuration",
       "options" : {
 
@@ -15,9 +15,9 @@
     {
       "parallelizable" : true,
       "target" : {
-        "containerPath" : "container:EssentialApp.xcodeproj",
-        "identifier" : "F4562A462B86602F001FDEFA",
-        "name" : "EssentialAppTests"
+        "containerPath" : "container:EssentialFeed.xcodeproj",
+        "identifier" : "F45275C32B7A3A3C001D85BB",
+        "name" : "EssentialFeedCacheIntegrationTests"
       }
     }
   ],

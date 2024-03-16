@@ -224,6 +224,8 @@
 		F45275BE2B7A20B7001D85BB /* ManagedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedCache.swift; sourceTree = "<group>"; };
 		F45275C42B7A3A3C001D85BB /* EssentialFeedCacheIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedCacheIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45275C62B7A3A3C001D85BB /* EssentialFeedCacheIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialFeedCacheIntegrationTests.swift; sourceTree = "<group>"; };
+		F463D98F2BA664A7008B7BE1 /* EssentialFeedCacheIntegrationTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EssentialFeedCacheIntegrationTests.xctestplan; sourceTree = "<group>"; };
+		F463D9902BA66508008B7BE1 /* EssentialFeediOSTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EssentialFeediOSTests.xctestplan; sourceTree = "<group>"; };
 		F47BE69F2B6E466C0019FEE2 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 		F47BE6A22B6E9B240019FEE2 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		F47BE6A42B6EBC220019FEE2 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
@@ -670,6 +672,7 @@
 		F45275C52B7A3A3C001D85BB /* EssentialFeedCacheIntegrationTests */ = {
 			isa = PBXGroup;
 			children = (
+				F463D98F2BA664A7008B7BE1 /* EssentialFeedCacheIntegrationTests.xctestplan */,
 				F45275C62B7A3A3C001D85BB /* EssentialFeedCacheIntegrationTests.swift */,
 			);
 			path = EssentialFeedCacheIntegrationTests;
@@ -784,6 +787,7 @@
 		F4A246312B7CF4C000A7BBD7 /* EssentialFeediOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				F463D9902BA66508008B7BE1 /* EssentialFeediOSTests.xctestplan */,
 				F4263B372B91F4290057B75C /* Image Comments UI */,
 				F4263B222B91E8990057B75C /* Shared UI */,
 				F4F5A3802B8A1C4D0092EA71 /* Helpers */,

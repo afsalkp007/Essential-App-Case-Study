@@ -1,7 +1,7 @@
 {
   "configurations" : [
     {
-      "id" : "2ED79A94-A43B-4F65-8FCC-B7A58C15588B",
+      "id" : "F655D8D4-DBFC-4728-B2C3-3556CF3D2538",
       "name" : "Configuration",
       "options" : {
 
@@ -15,9 +15,9 @@
     {
       "parallelizable" : true,
       "target" : {
-        "containerPath" : "container:EssentialApp.xcodeproj",
-        "identifier" : "F4562A462B86602F001FDEFA",
-        "name" : "EssentialAppTests"
+        "containerPath" : "container:EssentialFeed.xcodeproj",
+        "identifier" : "F4A2462C2B7CF4BF00A7BBD7",
+        "name" : "EssentialFeediOSTests"
       }
     }
   ],
